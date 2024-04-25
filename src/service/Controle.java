@@ -422,6 +422,11 @@ public class Controle {
             stmt.setInt(1, codigo);
             stmt.execute();
             stmt.close();
+            sql = "DELETE FROM EMPRESTARUSUARIO WHERE CODIGO = ?";
+            stmt = Conexao.getConnection().prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            stmt.execute();
+            stmt.close();
             System.out.println("Livro devolvido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao devolver livro!");
@@ -433,6 +438,11 @@ public class Controle {
         String sql = "UPDATE LIVROS SET STATUS = 'Disponível' WHERE CODIGO = ?";
         try {
             PreparedStatement stmt = Conexao.getConnection().prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            stmt.execute();
+            stmt.close();
+            sql = "DELETE FROM EMPRESTARFUNCIONARIO WHERE CODIGO = ?";
+            stmt = Conexao.getConnection().prepareStatement(sql);
             stmt.setInt(1, codigo);
             stmt.execute();
             stmt.close();
